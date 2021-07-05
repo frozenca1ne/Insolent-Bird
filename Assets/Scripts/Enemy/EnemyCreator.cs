@@ -43,10 +43,11 @@ public class EnemyCreator : MonoBehaviour
         return randomNumber;
         
 	}
-	private void OnEnable()
+	private void Start()
 	{
-        SelectStepState();
-	}
+        Instantiate(enemysList.NormalEnemy, activeEnemyPosition.position, Quaternion.identity);
+        //SelectStepState();
+    }
 	private void SelectStepState()
 	{
         var currentChance = Random.Range(0, 100);
