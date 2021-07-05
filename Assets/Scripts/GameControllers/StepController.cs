@@ -24,7 +24,7 @@ public class StepController : MonoBehaviour
 	private void ShakeStep()
 	{
 		if (!isShaked) return;
-		var punchVector = new Vector2(0, -0.1f);
+		var punchVector = new Vector2(0, -0.2f);
 		selfTransform.DOPunchPosition(punchVector, 0.1f, 1);
 		StartCoroutine(ChangeShakedState(shakedChangeDelay));
 	}

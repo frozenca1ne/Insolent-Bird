@@ -22,6 +22,8 @@ public class StartMenuController : MonoBehaviour
 
     private bool isSoundOn;
 
+	public bool IsSoundOn { get => isSoundOn; set => isSoundOn = value; }
+
 	private void Update()
 	{
         StartGame();
@@ -29,7 +31,7 @@ public class StartMenuController : MonoBehaviour
 	private void OnEnable()
 	{
         SetBestScore();
-        isSoundOn = true;
+        IsSoundOn = true;
         //check sound settings from json
 
         rateButton.onClick.AddListener(ActivateRatePanel);
@@ -46,7 +48,7 @@ public class StartMenuController : MonoBehaviour
 	}
     private void ChangeVolume()
 	{
-		if (isSoundOn)
+		if (IsSoundOn)
 		{
 			audioController.MuteSound(false);
 		}
@@ -58,8 +60,8 @@ public class StartMenuController : MonoBehaviour
 	}
     private void ChangeSoundButtonImage()
     {
-        isSoundOn = isSoundOn != true;
-        soundButtonImage.sprite = isSoundOn == true ? soundOn : soundOff;
+        IsSoundOn = IsSoundOn != true;
+        soundButtonImage.sprite = IsSoundOn == true ? soundOn : soundOff;
     }
     private void StartGame()
     {

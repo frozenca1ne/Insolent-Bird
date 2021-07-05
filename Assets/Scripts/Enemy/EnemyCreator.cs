@@ -45,8 +45,7 @@ public class EnemyCreator : MonoBehaviour
 	}
 	private void Start()
 	{
-        Instantiate(enemysList.NormalEnemy, activeEnemyPosition.position, Quaternion.identity);
-        //SelectStepState();
+        SelectStepState();
     }
 	private void SelectStepState()
 	{

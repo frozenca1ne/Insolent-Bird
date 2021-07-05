@@ -86,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfRigidbody: {fileID: 1995309590567714017}
   birdImage: {fileID: 1995309591460237855}
-  jumpAmount: 1.8
+  jumpAmount: 5.5
   jumpDuration: 0.5
   moveSpeed: 0.4
 --- !u!212 &1995309590567714021

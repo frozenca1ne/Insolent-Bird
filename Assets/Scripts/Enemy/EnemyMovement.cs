@@ -42,8 +42,5 @@ public class EnemyMovement : MonoBehaviour
 			isMoveRight = isMoveRight != true;
 		}
 	}
-	private void OnBecameInvisible()
-	{
-		Destroy(this.gameObject);
-	}
+	
 }

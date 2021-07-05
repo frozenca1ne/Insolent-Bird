@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class BirdMovement : MonoBehaviour
 {
@@ -9,7 +8,6 @@ public class BirdMovement : MonoBehaviour
 	[SerializeField] private Transform birdImage;
 	[Header("Jump")]
 	[SerializeField] private float jumpAmount = 10f;
-	[SerializeField] private float jumpDuration = 2f;
 	[Header("Move")]
 	[SerializeField] private float moveSpeed = 5f;
 	
@@ -40,8 +38,7 @@ public class BirdMovement : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Mouse0))
 		{
 			if (isSecondJump) return;
-			var currentY = transform.position.y;
-			selfRigidbody.transform.DOMoveY(currentY + jumpAmount, jumpDuration);
+			selfRigidbody.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
 			jumpCount++;
 			if(jumpCount >= 2)
 			{
