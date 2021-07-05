@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfd580b8fe20fae48bd76602f9bf753a, type: 3}
+  m_Name: Enemys
+  m_EditorClassIdentifier: 
+  noHeadEnemy: {fileID: 4107701018577447229, guid: 33edaa72382f0294a8b24134016e38af, type: 3}
+  normalEnemy: {fileID: 8992148852878556157, guid: 2d2fafde0349a4a469438552df8ab0a5, type: 3}
+  hornedEnemy: {fileID: 1942029698522362159, guid: 3c38e0ff75fd5de47966b3d4cef84f70, type: 3}

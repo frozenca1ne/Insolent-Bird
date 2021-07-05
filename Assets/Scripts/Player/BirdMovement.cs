@@ -12,7 +12,7 @@ public class BirdMovement : MonoBehaviour
 	[SerializeField] private float jumpDuration = 2f;
 	[Header("Move")]
 	[SerializeField] private float moveSpeed = 5f;
-	[SerializeField] private float moveDuration = 5f;
+	
 
 	private bool isMoveRight;
 	private bool isSecondJump;
@@ -43,7 +43,7 @@ public class BirdMovement : MonoBehaviour
 			var currentY = transform.position.y;
 			selfRigidbody.transform.DOMoveY(currentY + jumpAmount, jumpDuration);
 			jumpCount++;
-			if(jumpCount >= 1)
+			if(jumpCount >= 2)
 			{
 				isSecondJump = true;
 			}
