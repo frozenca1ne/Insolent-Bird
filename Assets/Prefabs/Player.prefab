@@ -84,10 +84,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9efad6a5b291144ab3ac0754497453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 182810486}
   selfRigidbody: {fileID: 1995309590567714017}
+  selfCollider: {fileID: 6228060047938273441}
   birdImage: {fileID: 1995309591460237855}
   jumpAmount: 5.5
-  jumpDuration: 0.5
   moveSpeed: 0.4
 --- !u!212 &1995309590567714021
 SpriteRenderer:

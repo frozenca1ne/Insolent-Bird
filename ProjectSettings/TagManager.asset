@@ -8,6 +8,7 @@ TagManager:
   - Bird
   - Step
   - Enemy
+  - Button
   layers:
   - Default
   - TransparentFX

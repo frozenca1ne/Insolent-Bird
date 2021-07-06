@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using UnityEngine.EventSystems;
 
 
-public class StartMenuController : MonoBehaviour
+public class StartMenuController : MonoBehaviour,IPointerClickHandler
 {
+    public static event Action OnGameStart;
+
     [Header("Score")]
     [SerializeField] private TMP_Text bestScoreText;
     [Header("Buttons")]
@@ -24,10 +28,6 @@ public class StartMenuController : MonoBehaviour
 
 	public bool IsSoundOn { get => isSoundOn; set => isSoundOn = value; }
 
-	private void Update()
-	{
-        StartGame();
-	}
 	private void OnEnable()
 	{
         SetBestScore();
@@ -63,10 +63,10 @@ public class StartMenuController : MonoBehaviour
         IsSoundOn = IsSoundOn != true;
         soundButtonImage.sprite = IsSoundOn == true ? soundOn : soundOff;
     }
-    private void StartGame()
-    {
-        if (!Input.anyKey) return;
+	public void OnPointerClick(PointerEventData eventData)
+	{
+        if (eventData.pointerCurrentRaycast.gameObject.CompareTag("Button")) return;
         gameObject.SetActive(false);
+        OnGameStart?.Invoke();
     }
-
 }

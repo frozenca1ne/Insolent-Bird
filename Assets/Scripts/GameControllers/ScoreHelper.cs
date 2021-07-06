@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 [Serializable]
-public class ScoreHelper : MonoBehaviour
+public class ScoreHelper 
 {
     public static event Action<int> OnScoreAdds;
     public static event Action<int> OnCoinsAdd;

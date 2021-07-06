@@ -4,7 +4,18 @@ public class BackgroundFollow : MonoBehaviour
 {
 	[SerializeField] private Transform targetCamera;
 	[SerializeField] private Vector3 offset;
+	[SerializeField] private Vector3 startPosition;
 
+	private bool isGameStarted;
+	private void OnEnable()
+	{
+		isGameStarted = false;
+		StartMenuController.OnGameStart += SetStart;
+	}
+	private void OnDisable()
+	{
+		StartMenuController.OnGameStart -= SetStart;
+	}
 	private void Update()
 	{
 		Follow();
@@ -12,6 +23,17 @@ public class BackgroundFollow : MonoBehaviour
 	private void Follow()
 	{
 		if (targetCamera == null) return;
-		transform.position = targetCamera.position + offset;
+		if (!isGameStarted)
+		{
+			transform.position = startPosition;
+		}
+		else
+		{
+			transform.position = targetCamera.position + offset;
+		}		
+	}
+	private void SetStart()
+	{
+		isGameStarted = isGameStarted != true;
 	}
 }
