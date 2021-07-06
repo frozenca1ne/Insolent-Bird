@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private CanvasGroup gameMenu;
 	[SerializeField] private CanvasGroup gameoverMenu;
 	[SerializeField] private int sceneIndex = 0;
-
+	
    private enum GameState
 	{
 		Start,
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 		switch(state)
 		{
 			case GameState.Start:
-				SceneManager.LoadScene(sceneIndex);
+				//SceneManager.LoadScene(sceneIndex);			
 				break;
 			case GameState.Play:
 				Time.timeScale = 1;
@@ -38,4 +38,9 @@ public class GameManager : MonoBehaviour
 				break;
 		}
 	}
+	private void OnEnable()
+	{
+		ChangeGameState(GameState.Start);
+	}
+
 }

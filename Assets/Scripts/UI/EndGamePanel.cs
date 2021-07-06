@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class EndGamePanel : MonoBehaviour
 {
     [SerializeField] private Button restartButton;
     [SerializeField] private Button birdUpgradeButton;
     [SerializeField] private Button rateButton;
+    [SerializeField] private Image ratePanel;
     [SerializeField] private Button homeButton;
     [SerializeField] private Button shareButton;
 
@@ -19,7 +21,21 @@ public class EndGamePanel : MonoBehaviour
     [SerializeField] private float moveDelay = 0.5f;
     [SerializeField] private float moveRate = 0.8f;
 
-	private void Start()
+	private void OnEnable()
+	{
+        homeButton.onClick.AddListener(LoadStartScene);
+        rateButton.onClick.AddListener(ActivateRatePanel);
+	}
+    private void LoadStartScene()
+	{
+        var scene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scene);
+	}
+    private void ActivateRatePanel()
+    {
+        ratePanel.gameObject.SetActive(true);
+    }
+    private void Start()
 	{
         ShowMenu();
 	}

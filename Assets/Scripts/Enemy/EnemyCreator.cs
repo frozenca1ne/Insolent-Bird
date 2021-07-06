@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,19 +9,21 @@ public class EnemyCreator : MonoBehaviour
     [SerializeField] private Transform activeEnemyPosition;
     [SerializeField] private Transform[] sleepingPositions;
     [Header("RandomConfig")]
-    [SerializeField] private int chanceToActive = 50;
-    [SerializeField] private int chanceToFull = 50;
+    [SerializeField] private int chanceToActive = 5;
+    [SerializeField] private int chanceToFull = 6;
 
     private enum StepState
 	{
-        Clean,
-        Sleeping,
-        Normal,
-        Horned
+        Clean = 1,
+        Sleeping =2,
+        Normal = 3,
+        Horned = 4
 	}
+    
     
     private void CreateEnemy(StepState state)
 	{
+        
         switch (state)
         {
             case StepState.Clean:
@@ -49,32 +52,9 @@ public class EnemyCreator : MonoBehaviour
     }
 	private void SelectStepState()
 	{
-        var currentChance = Random.Range(0, 100);
-        if(currentChance<chanceToActive)
-		{
-            if(currentChance<chanceToFull)
-			{
-                CreateEnemy(StepState.Clean);
-			}
-            else
-			{
-                CreateEnemy(StepState.Sleeping);
-			}
-		}
-        else
-		{
-            var randomNumber = Random.Range(0, 1);
-            if(randomNumber == 0)
-			{
-                CreateEnemy(StepState.Normal);
-            }
-            else
-			{
-                CreateEnemy(StepState.Horned);
-            }
-		}
-        
-	}
+        var currentChance = Random.Range(1, 4);
+        CreateEnemy((StepState)currentChance);
+    }
     
 
 }

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 
 public class StartMenuController : MonoBehaviour,IPointerClickHandler
@@ -28,8 +29,15 @@ public class StartMenuController : MonoBehaviour,IPointerClickHandler
 
 	public bool IsSoundOn { get => isSoundOn; set => isSoundOn = value; }
 
-	private void OnEnable()
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.pointerCurrentRaycast.gameObject.CompareTag("Button")) return;
+        gameObject.SetActive(false);
+        OnGameStart?.Invoke();
+    }
+    private void OnEnable()
 	{
+        AnimButton();
         SetBestScore();
         IsSoundOn = true;
         //check sound settings from json
@@ -63,10 +71,14 @@ public class StartMenuController : MonoBehaviour,IPointerClickHandler
         IsSoundOn = IsSoundOn != true;
         soundButtonImage.sprite = IsSoundOn == true ? soundOn : soundOff;
     }
-	public void OnPointerClick(PointerEventData eventData)
+    private void AnimButton()
 	{
-        if (eventData.pointerCurrentRaycast.gameObject.CompareTag("Button")) return;
-        gameObject.SetActive(false);
-        OnGameStart?.Invoke();
+        var rotateVector = new Vector3(0,0,10);
+        Sequence rotateButton = DOTween.Sequence();
+        rotateButton.Append(upgradeButton.transform.DORotate(rotateVector, 1f))
+            .AppendInterval(0.5f)
+            .Append(upgradeButton.transform.DORotate(-rotateVector, 1f))
+            .AppendInterval(0.5f)
+            .SetLoops(-1);
     }
 }
